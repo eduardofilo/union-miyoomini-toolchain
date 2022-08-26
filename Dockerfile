@@ -26,6 +26,9 @@ RUN apt-get -y update && apt-get -y install \
 RUN mkdir -p /root/workspace
 WORKDIR /root
 
+COPY libs/*.h /opt/miyoomini-toolchain/arm-linux-gnueabihf/libc/usr/include/
+COPY libs/*.so /opt/miyoomini-toolchain/arm-linux-gnueabihf/libc/usr/lib/
+
 COPY support .
 RUN ./setup-toolchain.sh
 RUN cat setup-env.sh >> .bashrc
